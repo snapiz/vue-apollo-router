@@ -1,20 +1,6 @@
 .DS_Store
 node_modules
-dist
-bin
-
-# Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
-
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
-
-#aws
-packaged.yml
+/dist
 
 # local env files
 .env.local
@@ -24,10 +10,10 @@ packaged.yml
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-lerna-debug.log*
 
 # Editor directories and files
 .idea
+.vscode
 *.suo
 *.ntvs*
 *.njsproj
