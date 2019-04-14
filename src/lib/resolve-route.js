@@ -1,8 +1,17 @@
 import mergeGraphQLTags from "./merge-graphql-tags";
 
 export default function resolveRoute(context) {
-  const { route, next, apollo: apolloClient, defaultQuery, beforeRender } = context;
+  const {
+    route,
+    next,
+    apollo: apolloClient,
+    defaultQuery,
+    beforeRender,
+    params,
+    history
+  } = context;
   const { redirect, title, apollo } = route;
+  const { search } = history.location;
 
   if (!title) {
     return next();
@@ -13,6 +22,15 @@ export default function resolveRoute(context) {
       redirect
     };
   }
+
+  search &&
+    search
+      .substring(1)
+      .split("&")
+      .map(v => v.split("="))
+      .forEach(([key, value]) => {
+        params[key] = decodeURIComponent(value);
+      });
 
   let componentPromise = route.component ? route.component : null;
 
@@ -28,7 +46,7 @@ export default function resolveRoute(context) {
         return next();
       }
 
-      return { ...route, component };
+      return { ...route, component, params };
     });
   }
 
@@ -77,7 +95,7 @@ export default function resolveRoute(context) {
       data = datas.map(x => x.data);
     }
 
-    const renderData = { ...route, component, data };
+    const renderData = { ...route, component, data, params };
 
     return (beforeRender && beforeRender(renderData)) || renderData;
   });

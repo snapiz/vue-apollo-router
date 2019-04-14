@@ -7,12 +7,12 @@ import router from "./router";
 Vue.config.productionTip = false;
 
 const apolloClientA = new ApolloClient({
-  uri: "/main/api",
+  uri: "/api/main",
   credentials: "same-origin"
 });
 
 const apolloClientB = new ApolloClient({
-  uri: "/main/api",
+  uri: "/api/main",
   credentials: "same-origin"
 });
 

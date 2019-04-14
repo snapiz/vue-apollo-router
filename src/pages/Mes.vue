@@ -9,7 +9,7 @@
 export default {
   name: "Mes",
   data() {
-    const [main1, main2] = this.$routeData;
+    const [main1, main2] = this.$route.data;
 
     return {
       email: main1.me.email,

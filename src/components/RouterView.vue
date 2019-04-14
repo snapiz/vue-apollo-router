@@ -51,8 +51,7 @@ export default {
         }
 
         window.document.title = title;
-        Vue.prototype.$route = route;
-        Vue.prototype.$routeData = data;
+        Vue.prototype.$route = {...route, data};
 
         this.routeComponent = component;
       });

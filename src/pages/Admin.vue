@@ -9,7 +9,7 @@ export default {
   name: 'Admin',
   data() {
     return {
-      avatar: this.$routeData.me.avatar
+      avatar: this.$route.data.me.avatar
     }
   }
 }
